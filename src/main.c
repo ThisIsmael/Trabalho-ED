@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "estruturas.h"
+#include "../headers/estruturas.h"
+#include "../headers/abbl.h"
 
 int main()
 {
