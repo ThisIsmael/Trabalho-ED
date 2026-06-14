@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../headers/livro.h"
+#include "../headers/livro.h" //
 
 Livro* criarLivro(int codigo, char titulo[], char autor[],
                   int ano, int quantidadeTotal)
@@ -37,6 +37,8 @@ void exibirLivro(Livro* livro)
         return;
     }
 
+    printf("--------------------------------------------------\n");
+    printf("           Informacoes do Livro\n");
     printf("--------------------------------------------------\n");
     printf("Codigo: %d\n",  livro->codigo);
     printf("Titulo: %s\n",  livro->titulo);
