@@ -51,6 +51,7 @@ int main()
         printf("9.  Exibir historico de emprestimos\n");
         printf("10. Exibir quantidade de livros cadastrados\n");
         printf("11. Exibir altura da arvore\n");
+        printf("12. Remover livro\n");
         printf("0.  Sair\n");
         opcao = lerIntInputMenu("Escolha uma opcao (apenas numeros): ");
 
@@ -212,6 +213,13 @@ int main()
             case 11:
              //Exibir a altura da arvore binaria de busca
                 printf("Altura da arvore: %d\n", calcularAlturaArvore(&arvore));
+                break;
+
+            case 12:
+            //Remover livro da arvore
+                int codigoRemover = lerIntInputInfo("Digite o codigo do livro que deseja remover: ");
+                removerLivroArvore(&arvore, codigoRemover);
+                printf("Livro com codigo %d removido com sucesso!\n", codigoRemover);
                 break;
 
             case 0:
