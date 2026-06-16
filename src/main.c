@@ -29,8 +29,6 @@ int lerIntInputInfo(const char *mensagem) {
     getchar(); /* descarta o '\n' que fica apos o numero digitado */
     return valor;
 }
-
-
 int main()
 {
     // aqui vão ser Inicializadas as tres estruturas de dados principais do sistema (arvore, lista, fila) 

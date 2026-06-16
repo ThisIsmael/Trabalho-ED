@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "estruturas.h"
+#include "../headers/estruturas.h"
 
 /* ==========================================================================
    1. LISTA ENCADEADA SIMPLES (TAD)
