@@ -1,20 +1,13 @@
 /**
- * @file abbl.h
+ * @file arvore.h
  * @brief Definição de Tipos Abstratos de Dados (TAD) em C: Árvore Binária de Busca para Livros.
  * Este arquivo contém as estruturas de dados e os protótipos de funções seguindo o conceito de TAD (Tipo Abstrato de Dados).
  */
 
-#ifndef ABBL_H
-#define ABBL_H
+#ifndef ARVORE_H
+#define ARVORE_H
 #include <stdbool.h>
-
-/** @brief Estrutura que representa um Livro */
-typedef struct {
-    int codigo;
-    char titulo[100];
-    char autor[100];
-    int ano_publicacao;
-} Livro;
+#include "livro.h"
 
 /** @brief Nó da Árvore de Livros */
 typedef struct NodeArvore {
@@ -35,5 +28,6 @@ void listarLivrosPreOrdem ( Arvore * arvore ) ;
 void listarLivrosPosOrdem ( Arvore * arvore ) ;
 int contarLivros ( Arvore * arvore ) ;
 int calcularAlturaArvore ( Arvore * arvore ) ;
+void liberarArvore ( Arvore * arvore ) ;
 
 #endif /* ABBL_H */

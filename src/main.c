@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h> 
 #include "../headers/livro.h"   
-#include "../headers/abbl.h"    
+#include "../headers/arvore.h"    
 #include "../headers/fila.h"    
 #include "../headers/lista.h"  
 
@@ -15,7 +15,7 @@ int lerIntInputMenu(const char *mensagem) {
         printf("Entrada invalida! Digite um numero:");
         while (getchar() != '\n'); /* limpa o buffer do teclado */
     }
-    getchar(); /* descarta o '\n' que fica apos o numero digitado */
+    while (getchar() != '\n'); /* descarta tudo que ficou no buffer apos o numero digitado */
     return valor;
 }
 
@@ -26,7 +26,7 @@ int lerIntInputInfo(const char *mensagem) {
         printf("Entrada invalida! Digite com número(s):");
         while (getchar() != '\n'); /* limpa o buffer do teclado */
     }
-    getchar(); /* descarta o '\n' que fica apos o numero digitado */
+    while (getchar() != '\n'); /* descarta tudo que ficou no buffer apos o numero digitado */
     return valor;
 }
 int main()
@@ -226,7 +226,7 @@ int main()
     } while (opcao != 0); // repete ate o usuario escolher sair 
 
     // Libera toda a memoria alocada dinamicamente antes de encerrar o programa
-    //liberarArvore(&arvore); deveria ter uma função para liberar a memoria alocada para a arvore, mas como n foi implementada, n tem como usar aqui
+    liberarArvore(&arvore); 
     liberarFila(fila);
     liberarLista(historico);
 

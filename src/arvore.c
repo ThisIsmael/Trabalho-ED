@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/abbl.h"
-#include "../headers/estruturas.h" // Importando as funções e estruturas de estruturas.h conforme solicitado
+#include "../headers/arvore.h"
+#include "../headers/livro.h"
 
 /* ==========================================================================
    Funções auxiliares recursivas
@@ -30,7 +30,7 @@ static NodeArvore* inserir_no_abbl(NodeArvore* no, Livro* livro) {
 static void imprimir_livro(Livro* livro) {
     if (livro != NULL) {
         printf("Codigo: %d | Titulo: %s | Autor: %s | Ano: %d\n", 
-               livro->codigo, livro->titulo, livro->autor, livro->ano_publicacao);
+               livro->codigo, livro->titulo, livro->autor, livro->ano);
     }
 }
 
@@ -118,4 +118,20 @@ int contarLivros(Arvore* arvore) {
 int calcularAlturaArvore(Arvore* arvore) {
     if (arvore == NULL) return -1;
     return altura_no(arvore->raiz);
+}
+
+static void liberar_nos_abbl(NodeArvore* no) {
+    if (no != NULL) {
+        liberar_nos_abbl(no->esquerdo);
+        liberar_nos_abbl(no->direito);
+        if (no->livro != NULL) free(no->livro);
+        free(no);
+    }
+}
+
+void liberarArvore(Arvore* arvore) {
+    if (arvore != NULL) {
+        liberar_nos_abbl(arvore->raiz);
+        arvore->raiz = NULL;
+    }
 }
