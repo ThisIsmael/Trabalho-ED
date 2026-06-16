@@ -27,6 +27,50 @@ static NodeArvore* inserir_no_abbl(NodeArvore* no, Livro* livro) {
     return no;
 }
 
+static NodeArvore* remover_no_abbl(NodeArvore* no, int codigo) {
+    if (no == NULL) {
+        return NULL;
+    }
+
+    if (codigo < no->livro->codigo) {
+        no->esquerdo = remover_no_abbl(no->esquerdo, codigo);
+    } else if (codigo > no->livro->codigo) {
+        no->direito = remover_no_abbl(no->direito, codigo);
+    } else {
+        if (no->esquerdo == NULL) {
+            NodeArvore* temp = no->direito;
+            if (no->livro != NULL) free(no->livro);
+            free(no);
+            return temp;
+        } else if (no->direito == NULL) {
+            NodeArvore* temp = no->esquerdo;
+            if (no->livro != NULL) free(no->livro);
+            free(no);
+            return temp;
+        }
+
+        NodeArvore* pai_sucessor = no;
+        NodeArvore* sucessor = no->direito;
+        while (sucessor->esquerdo != NULL) {
+            pai_sucessor = sucessor;
+            sucessor = sucessor->esquerdo;
+        }
+
+        if (no->livro != NULL) free(no->livro);
+        no->livro = sucessor->livro;
+
+        if (pai_sucessor == no) {
+            pai_sucessor->direito = sucessor->direito;
+        } else {
+            pai_sucessor->esquerdo = sucessor->direito;
+        }
+        
+        free(sucessor);
+    }
+    
+    return no;
+}
+
 static void imprimir_livro(Livro* livro) {
     if (livro != NULL) {
         printf("Codigo: %d | Titulo: %s | Autor: %s | Ano: %d\n", 
@@ -77,6 +121,11 @@ static int altura_no(NodeArvore* no) {
 void inserirLivroArvore(Arvore* arvore, Livro* livro) {
     if (arvore == NULL || livro == NULL) return;
     arvore->raiz = inserir_no_abbl(arvore->raiz, livro);
+}
+
+void removerLivroArvore(Arvore* arvore, int codigo) {
+    if (arvore == NULL) return;
+    arvore->raiz = remover_no_abbl(arvore->raiz, codigo);
 }
 
 Livro* buscarLivroArvore(Arvore* arvore, int codigo) {
