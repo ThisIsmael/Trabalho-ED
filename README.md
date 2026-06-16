@@ -22,7 +22,9 @@ O Sistema de Gerenciamento de Biblioteca foi desenvolvido em linguagem C com o o
 - Exibição da fila de reservas;
 - Histórico de empréstimos;
 - Contagem de livros cadastrados;
-- Cálculo da altura da árvore.
+- Cálculo da altura da árvore;
+- Remoção de livros;
+- Busca de livros por título ou autor.
 
 ## Estruturas de Dados Utilizadas
 
@@ -177,7 +179,5 @@ Titulo do livro: Estrutura de Dados
 
 - Os dados são armazenados apenas em memória.
 - As informações são perdidas ao encerrar o programa.
-- A busca é realizada apenas pelo código do livro.
 - Não existe persistência em arquivos ou banco de dados.
-- Não há remoção de livros cadastrados.
 - O sistema funciona via terminal.
