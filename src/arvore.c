@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 #include "../headers/arvore.h"
 #include "../headers/livro.h"
 
@@ -114,6 +116,36 @@ static int altura_no(NodeArvore* no) {
     return (alt_esq > alt_dir ? alt_esq : alt_dir) + 1;
 }
 
+static int contem_substring_ignorando_caso(const char* texto, const char* sub) {
+    if (!*sub) return 1;
+    char txt_lower[200];
+    char sub_lower[200];
+    
+    int i = 0;
+    while (texto[i] && i < 199) { txt_lower[i] = tolower((unsigned char)texto[i]); i++; }
+    txt_lower[i] = '\0';
+    
+    i = 0;
+    while (sub[i] && i < 199) { sub_lower[i] = tolower((unsigned char)sub[i]); i++; }
+    sub_lower[i] = '\0';
+    
+    return strstr(txt_lower, sub_lower) != NULL;
+}
+
+static void buscar_por_titulo_autor_abbl(NodeArvore* no, const char* termo, int* encontrou) {
+    if (no != NULL) {
+        buscar_por_titulo_autor_abbl(no->esquerdo, termo, encontrou);
+        
+        if (contem_substring_ignorando_caso(no->livro->titulo, termo) || 
+            contem_substring_ignorando_caso(no->livro->autor, termo)) {
+            imprimir_livro(no->livro);
+            *encontrou = 1;
+        }
+        
+        buscar_por_titulo_autor_abbl(no->direito, termo, encontrou);
+    }
+}
+
 /* ==========================================================================
    Implementação das funções principais do TAD
    ========================================================================== */
@@ -142,6 +174,16 @@ Livro* buscarLivroArvore(Arvore* arvore, int codigo) {
         }
     }
     return NULL;
+}
+
+void buscarLivrosPorTituloOuAutor(Arvore* arvore, const char* termo) {
+    if (arvore == NULL || termo == NULL) return;
+    int encontrou = 0;
+    printf("Resultados da busca por '%s':\n", termo);
+    buscar_por_titulo_autor_abbl(arvore->raiz, termo, &encontrou);
+    if (!encontrou) {
+        printf("Nenhum livro encontrado com esse termo.\n");
+    }
 }
 
 void listarLivrosEmOrdem(Arvore* arvore) {

@@ -24,6 +24,7 @@ typedef struct {
 void inserirLivroArvore ( Arvore * arvore , Livro * livro ) ;
 void removerLivroArvore ( Arvore * arvore , int codigo ) ;
 Livro * buscarLivroArvore ( Arvore * arvore , int codigo ) ;
+void buscarLivrosPorTituloOuAutor ( Arvore * arvore , const char * termo ) ;
 void listarLivrosEmOrdem ( Arvore * arvore ) ;
 void listarLivrosPreOrdem ( Arvore * arvore ) ;
 void listarLivrosPosOrdem ( Arvore * arvore ) ;
