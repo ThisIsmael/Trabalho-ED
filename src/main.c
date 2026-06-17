@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h> 
 #include "../headers/livro.h"   
-#include "../headers/abbl.h"    
+#include "../headers/arvore.h"    
 #include "../headers/fila.h"    
 #include "../headers/lista.h"  
 
@@ -13,20 +13,25 @@ int lerIntInputMenu(const char *mensagem) {
     printf("%s", mensagem);
     while (scanf("%d", &valor) != 1) {
         printf("Entrada invalida! Digite um numero:");
-        while (getchar() != '\n'); /* limpa o buffer do teclado */
+        while (getchar() != '\n'); // limpa o buffer do teclado
     }
-    getchar(); /* descarta o '\n' que fica apos o numero digitado */
+    while (getchar() != '\n'); // descarta tudo que ficou no buffer apos o numero digitado
     return valor;
+}
+
+void esperarEnter(){
+    printf("\nPressione Enter para continuar...");
+    getchar();
 }
 
 int lerIntInputInfo(const char *mensagem) {
     int valor;
     printf("%s", mensagem);
     while (scanf("%d", &valor) != 1) {
-        printf("Entrada invalida! Digite com número(s):");
-        while (getchar() != '\n'); /* limpa o buffer do teclado */
+        printf("Entrada invalida! Digite com numero(s):");
+        while (getchar() != '\n'); // limpa o buffer do teclado 
     }
-    getchar(); /* descarta o '\n' que fica apos o numero digitado */
+    while (getchar() != '\n'); // descarta tudo que ficou no buffer apos o numero digitado 
     return valor;
 }
 int main()
@@ -51,6 +56,8 @@ int main()
         printf("9.  Exibir historico de emprestimos\n");
         printf("10. Exibir quantidade de livros cadastrados\n");
         printf("11. Exibir altura da arvore\n");
+        printf("12. Remover livro\n");
+        printf("13. Buscar livro por titulo ou autor\n");
         printf("0.  Sair\n");
         opcao = lerIntInputMenu("Escolha uma opcao (apenas numeros): ");
 
@@ -61,6 +68,7 @@ int main()
                 //primeiro vai ser verificado se ja existe um livro com esse codigo na arvore 
                 if (buscarLivroArvore(&arvore, codigo) != NULL) {
                     printf("Erro: Impossivel cadastrar este livro. Ja existe um livro com codigo %d.\n", codigo);
+                    esperarEnter();
                     break;
                 }
 
@@ -83,6 +91,7 @@ int main()
                 inserirLivroArvore(&arvore, livro);
 
                 printf("Livro cadastrado com sucesso!\n");
+                esperarEnter();
                 break;
             }
 
@@ -96,6 +105,7 @@ int main()
                 } else {
                     printf("Livro com codigo %d nao encontrado.\n", codigoBusca);
                 }
+                esperarEnter();
                 break;
             }
 
@@ -103,16 +113,19 @@ int main()
             case 3:
             // Listar livros em ordem crescente de codigo 
                 listarLivrosEmOrdem(&arvore);
+                esperarEnter();
                 break;
 
             case 4:
             // Listar livros em pre-ordem (raiz, esquerda, direita)
                 listarLivrosPreOrdem(&arvore);
+                esperarEnter();
                 break;
 
             case 5:
               // Listar livros em pos-ordem (esquerda, direita, raiz)
                 listarLivrosPosOrdem(&arvore);
+                esperarEnter();
                 break;
 
             case 6: {
@@ -157,6 +170,7 @@ int main()
                         printf("Usuario inserido na fila de reservas!\n");
                     }
                 }
+                esperarEnter();
                 break;
             }
 
@@ -191,28 +205,52 @@ int main()
                         }
                     }
                 }
+                esperarEnter();
                 break;
             }
 
             case 8:
             //Exibir todos os usuarios na fila de reservas
                 exibirReservas(fila);
+                esperarEnter();
                 break;
 
             case 9:
             //Exibir historico completo de emprestimos realizados
                 listarEmprestimos(historico);
+                esperarEnter();
                 break;
 
             case 10:
             //Exibir total de livros cadastrados na arvore
                 printf("Quantidade de livros cadastrados: %d\n", contarLivros(&arvore));
+                esperarEnter();
                 break;
 
             case 11:
              //Exibir a altura da arvore binaria de busca
                 printf("Altura da arvore: %d\n", calcularAlturaArvore(&arvore));
+                esperarEnter();
                 break;
+
+            case 12:
+            //Remover livro da arvore
+                int codigoRemover = lerIntInputInfo("Digite o codigo do livro que deseja remover: ");
+                removerLivroArvore(&arvore, codigoRemover);
+                printf("Livro com codigo %d removido com sucesso!\n", codigoRemover);
+                esperarEnter();
+                break;
+
+            case 13: {
+            //Buscar livro por titulo ou autor
+                char termoBusca[100];
+                printf("Digite o titulo ou autor (ou parte deles) para busca: ");
+                fgets(termoBusca, sizeof(termoBusca), stdin);
+                termoBusca[strcspn(termoBusca, "\n")] = '\0';
+                buscarLivrosPorTituloOuAutor(&arvore, termoBusca);
+                esperarEnter();
+                break;
+            }
 
             case 0:
             //Encerra a execução do programa
@@ -222,11 +260,12 @@ int main()
             default:
             //caso não tenha a opção digitada:
                 printf("Opcao invalida. Por favor, tente novamente.\n");
+                esperarEnter();
         }
     } while (opcao != 0); // repete ate o usuario escolher sair 
 
     // Libera toda a memoria alocada dinamicamente antes de encerrar o programa
-    //liberarArvore(&arvore); deveria ter uma função para liberar a memoria alocada para a arvore, mas como n foi implementada, n tem como usar aqui
+    liberarArvore(&arvore); 
     liberarFila(fila);
     liberarLista(historico);
 
