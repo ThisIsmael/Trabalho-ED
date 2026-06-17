@@ -26,4 +26,8 @@ void emprestarExemplar(Livro* livro);
 
 void devolverExemplar(Livro* livro);
 
+<<<<<<< HEAD
 #endif 
+=======
+#endif /* LIVRO_H */
+>>>>>>> fix-main

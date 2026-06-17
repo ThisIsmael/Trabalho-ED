@@ -13,9 +13,9 @@ int lerIntInputMenu(const char *mensagem) {
     printf("%s", mensagem);
     while (scanf("%d", &valor) != 1) {
         printf("Entrada invalida! Digite um numero:");
-        while (getchar() != '\n'); /* limpa o buffer do teclado */
+        while (getchar() != '\n'); // limpa o buffer do teclado
     }
-    while (getchar() != '\n'); /* descarta tudo que ficou no buffer apos o numero digitado */
+    while (getchar() != '\n'); // descarta tudo que ficou no buffer apos o numero digitado
     return valor;
 }
 
@@ -28,10 +28,10 @@ int lerIntInputInfo(const char *mensagem) {
     int valor;
     printf("%s", mensagem);
     while (scanf("%d", &valor) != 1) {
-        printf("Entrada invalida! Digite com número(s):");
-        while (getchar() != '\n'); /* limpa o buffer do teclado */
+        printf("Entrada invalida! Digite com numero(s):");
+        while (getchar() != '\n'); // limpa o buffer do teclado 
     }
-    while (getchar() != '\n'); /* descarta tudo que ficou no buffer apos o numero digitado */
+    while (getchar() != '\n'); // descarta tudo que ficou no buffer apos o numero digitado 
     return valor;
 }
 int main()
