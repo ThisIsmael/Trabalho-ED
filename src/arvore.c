@@ -9,11 +9,7 @@
    Funções auxiliares recursivas
    ========================================================================== */
 
-<<<<<<< HEAD
 static NodeArvore* inserir_no_abbl(NodeArvore* no, Livro* livro) { // insere um novo nó na árvore
-=======
-static NodeArvore* inserir_no_abbl(NodeArvore* no, Livro* livro) {
->>>>>>> fix-main
     if (no == NULL) {
         NodeArvore* novo_no = (NodeArvore*)malloc(sizeof(NodeArvore));
         if (novo_no != NULL) {
@@ -33,11 +29,7 @@ static NodeArvore* inserir_no_abbl(NodeArvore* no, Livro* livro) {
     return no;
 }
 
-<<<<<<< HEAD
 static NodeArvore* remover_no_abbl(NodeArvore* no, int codigo) { // remove um nó da árvore
-=======
-static NodeArvore* remover_no_abbl(NodeArvore* no, int codigo) {
->>>>>>> fix-main
     if (no == NULL) {
         return NULL;
     }
@@ -81,22 +73,14 @@ static NodeArvore* remover_no_abbl(NodeArvore* no, int codigo) {
     return no;
 }
 
-<<<<<<< HEAD
 static void imprimir_livro(Livro* livro) { // Imprime os dados de um livro
-=======
-static void imprimir_livro(Livro* livro) {
->>>>>>> fix-main
     if (livro != NULL) {
         printf("Codigo: %d | Titulo: %s | Autor: %s | Ano: %d\n", 
                livro->codigo, livro->titulo, livro->autor, livro->ano);
     }
 }
 
-<<<<<<< HEAD
 static void em_ordem_abbl(NodeArvore* no) { // faz o percurso em ordem na árvore
-=======
-static void em_ordem_abbl(NodeArvore* no) {
->>>>>>> fix-main
     if (no != NULL) {
         em_ordem_abbl(no->esquerdo);
         imprimir_livro(no->livro);
@@ -104,11 +88,7 @@ static void em_ordem_abbl(NodeArvore* no) {
     }
 }
 
-<<<<<<< HEAD
 static void pre_ordem_abbl(NodeArvore* no) { // faz o percurso em pre-ordem na árvore
-=======
-static void pre_ordem_abbl(NodeArvore* no) {
->>>>>>> fix-main
     if (no != NULL) {
         imprimir_livro(no->livro);
         pre_ordem_abbl(no->esquerdo);
@@ -116,11 +96,7 @@ static void pre_ordem_abbl(NodeArvore* no) {
     }
 }
 
-<<<<<<< HEAD
 static void pos_ordem_abbl(NodeArvore* no) { // faz o percurso em pos-ordem na árvore
-=======
-static void pos_ordem_abbl(NodeArvore* no) {
->>>>>>> fix-main
     if (no != NULL) {
         pos_ordem_abbl(no->esquerdo);
         pos_ordem_abbl(no->direito);
@@ -128,31 +104,19 @@ static void pos_ordem_abbl(NodeArvore* no) {
     }
 }
 
-<<<<<<< HEAD
 static int contar_nos(NodeArvore* no) { // conta quantos livros tem na árvore   
-=======
-static int contar_nos(NodeArvore* no) {
->>>>>>> fix-main
     if (no == NULL) return 0;
     return 1 + contar_nos(no->esquerdo) + contar_nos(no->direito);
 }
 
-<<<<<<< HEAD
 static int altura_no(NodeArvore* no) { // calcula a altura da árvore
-=======
-static int altura_no(NodeArvore* no) {
->>>>>>> fix-main
     if (no == NULL) return -1;
     int alt_esq = altura_no(no->esquerdo);
     int alt_dir = altura_no(no->direito);
     return (alt_esq > alt_dir ? alt_esq : alt_dir) + 1;
 }
 
-<<<<<<< HEAD
 static int contem_substring_ignorando_caso(const char* texto, const char* sub) { // verifica se uma string contém outra string, ignorando maiúsculas e minúsculas
-=======
-static int contem_substring_ignorando_caso(const char* texto, const char* sub) {
->>>>>>> fix-main
     if (!*sub) return 1;
     char txt_lower[200];
     char sub_lower[200];
@@ -168,11 +132,7 @@ static int contem_substring_ignorando_caso(const char* texto, const char* sub) {
     return strstr(txt_lower, sub_lower) != NULL;
 }
 
-<<<<<<< HEAD
 static void buscar_por_titulo_autor_abbl(NodeArvore* no, const char* termo, int* encontrou) { // busca um livro por titulo ou autor ignorando maiúsculas e minúsculas
-=======
-static void buscar_por_titulo_autor_abbl(NodeArvore* no, const char* termo, int* encontrou) {
->>>>>>> fix-main
     if (no != NULL) {
         buscar_por_titulo_autor_abbl(no->esquerdo, termo, encontrou);
         
