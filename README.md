@@ -79,6 +79,8 @@ Bem-vindo a Biblioteca!
 9.  Exibir historico de emprestimos
 10. Exibir quantidade de livros cadastrados
 11. Exibir altura da arvore
+12. Remover livro
+13. Buscar livro por titulo ou autor
 0.  Sair
 Escolha uma opcao (apenas numeros):
 ```
@@ -105,9 +107,9 @@ Livro encontrado!
            Informacoes do Livro
 --------------------------------------------------
 Codigo: 101
-Titulo: Estrutura de Dados
-Autor: Mark Allen Weiss
-Ano: 2018
+Titulo: o cORTIÇO
+Autor: Aluísio Azevedo
+Ano: 1890
 Total: 5 exemplar(es)
 Disponivel: 5 exemplar(es)
 --------------------------------------------------
@@ -139,10 +141,36 @@ Usuario inserido na fila de reservas!
 ### Histórico
 
 ```text
-===== HISTÓRICO DE EMPRÉSTIMOS =====
-Usuário: Bonfim
+===== HISTORICO DE EMPRESTIMOS =====
+Usuario: Bonfim
 Codigo do livro: 101
 Titulo do livro: Estrutura de Dados
+------------------------------------
+```
+
+### Devolução
+
+```text
+Escolha uma opcao (apenas numeros): 7
+Digite o codigo do livro que deseja devolver: 101
+O livro com codigo 101 foi devolvido com sucesso!
+```
+
+### Remoção de Livro
+
+```text
+Escolha uma opcao (apenas numeros): 12
+Digite o codigo do livro que deseja remover: 101
+Livro com codigo 101 removido com sucesso!
+```
+
+### Busca por Título ou Autor
+
+```text
+Escolha uma opcao (apenas numeros): 13
+Digite o titulo ou autor (ou parte deles) para busca: Weiss
+Resultados da busca por 'Weiss':
+Codigo: 101 | Titulo: Estrutura de Dados | Autor: Mark Allen Weiss | Ano: 2018 | Total: 5 | Disponivel: 5
 ```
 
 ## Funcionalidades Implementadas
@@ -160,7 +188,9 @@ Titulo do livro: Estrutura de Dados
 - Busca por código;
 - Percursos em ordem, pré-ordem e pós-ordem;
 - Contagem de livros;
-- Cálculo da altura da árvore.
+- Cálculo da altura da árvore;
+- Remoção de livros;
+- Busca por título ou autor (sem distinção de maiúsculas/minúsculas).
 
 ### Fila de Reservas
 
@@ -181,3 +211,4 @@ Titulo do livro: Estrutura de Dados
 - As informações são perdidas ao encerrar o programa.
 - Não existe persistência em arquivos ou banco de dados.
 - O sistema funciona via terminal.
+
