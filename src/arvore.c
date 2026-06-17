@@ -9,7 +9,7 @@
    Funções auxiliares recursivas
    ========================================================================== */
 
-static NodeArvore* inserir_no_abbl(NodeArvore* no, Livro* livro) {
+static NodeArvore* inserir_no_abbl(NodeArvore* no, Livro* livro) { // insere um novo nó na árvore
     if (no == NULL) {
         NodeArvore* novo_no = (NodeArvore*)malloc(sizeof(NodeArvore));
         if (novo_no != NULL) {
@@ -29,7 +29,7 @@ static NodeArvore* inserir_no_abbl(NodeArvore* no, Livro* livro) {
     return no;
 }
 
-static NodeArvore* remover_no_abbl(NodeArvore* no, int codigo) {
+static NodeArvore* remover_no_abbl(NodeArvore* no, int codigo) { // remove um nó da árvore
     if (no == NULL) {
         return NULL;
     }
@@ -73,14 +73,14 @@ static NodeArvore* remover_no_abbl(NodeArvore* no, int codigo) {
     return no;
 }
 
-static void imprimir_livro(Livro* livro) {
+static void imprimir_livro(Livro* livro) { // Imprime os dados de um livro
     if (livro != NULL) {
         printf("Codigo: %d | Titulo: %s | Autor: %s | Ano: %d\n", 
                livro->codigo, livro->titulo, livro->autor, livro->ano);
     }
 }
 
-static void em_ordem_abbl(NodeArvore* no) {
+static void em_ordem_abbl(NodeArvore* no) { // faz o percurso em ordem na árvore
     if (no != NULL) {
         em_ordem_abbl(no->esquerdo);
         imprimir_livro(no->livro);
@@ -88,7 +88,7 @@ static void em_ordem_abbl(NodeArvore* no) {
     }
 }
 
-static void pre_ordem_abbl(NodeArvore* no) {
+static void pre_ordem_abbl(NodeArvore* no) { // faz o percurso em pre-ordem na árvore
     if (no != NULL) {
         imprimir_livro(no->livro);
         pre_ordem_abbl(no->esquerdo);
@@ -96,7 +96,7 @@ static void pre_ordem_abbl(NodeArvore* no) {
     }
 }
 
-static void pos_ordem_abbl(NodeArvore* no) {
+static void pos_ordem_abbl(NodeArvore* no) { // faz o percurso em pos-ordem na árvore
     if (no != NULL) {
         pos_ordem_abbl(no->esquerdo);
         pos_ordem_abbl(no->direito);
@@ -104,19 +104,19 @@ static void pos_ordem_abbl(NodeArvore* no) {
     }
 }
 
-static int contar_nos(NodeArvore* no) {
+static int contar_nos(NodeArvore* no) { // conta quantos livros tem na árvore   
     if (no == NULL) return 0;
     return 1 + contar_nos(no->esquerdo) + contar_nos(no->direito);
 }
 
-static int altura_no(NodeArvore* no) {
+static int altura_no(NodeArvore* no) { // calcula a altura da árvore
     if (no == NULL) return -1;
     int alt_esq = altura_no(no->esquerdo);
     int alt_dir = altura_no(no->direito);
     return (alt_esq > alt_dir ? alt_esq : alt_dir) + 1;
 }
 
-static int contem_substring_ignorando_caso(const char* texto, const char* sub) {
+static int contem_substring_ignorando_caso(const char* texto, const char* sub) { // verifica se uma string contém outra string, ignorando maiúsculas e minúsculas
     if (!*sub) return 1;
     char txt_lower[200];
     char sub_lower[200];
@@ -132,7 +132,7 @@ static int contem_substring_ignorando_caso(const char* texto, const char* sub) {
     return strstr(txt_lower, sub_lower) != NULL;
 }
 
-static void buscar_por_titulo_autor_abbl(NodeArvore* no, const char* termo, int* encontrou) {
+static void buscar_por_titulo_autor_abbl(NodeArvore* no, const char* termo, int* encontrou) { // busca um livro por titulo ou autor ignorando maiúsculas e minúsculas
     if (no != NULL) {
         buscar_por_titulo_autor_abbl(no->esquerdo, termo, encontrou);
         
