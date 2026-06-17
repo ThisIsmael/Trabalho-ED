@@ -75,8 +75,8 @@ static NodeArvore* remover_no_abbl(NodeArvore* no, int codigo) { // remove um nÃ
 
 static void imprimir_livro(Livro* livro) { // Imprime os dados de um livro
     if (livro != NULL) {
-        printf("Codigo: %d | Titulo: %s | Autor: %s | Ano: %d\n", 
-               livro->codigo, livro->titulo, livro->autor, livro->ano);
+        printf("Codigo: %d | Titulo: %s | Autor: %s | Ano: %d | Total: %d | Disponivel: %d\n", 
+               livro->codigo, livro->titulo, livro->autor, livro->ano, livro->quantidadeTotal, livro->quantidadeDisponivel  );
     }
 }
 
