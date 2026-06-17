@@ -90,9 +90,9 @@ Escolha uma opcao (apenas numeros):
 ```text
 Escolha uma opcao (apenas numeros): 1
 Digite o codigo do livro (apenas numeros): 101
-Digite o titulo do livro: Estrutura de Dados
-Digite o autor do livro: Mark Allen Weiss
-Digite o ano do livro: 2018
+Digite o titulo do livro: O Cortico
+Digite o autor do livro: Aluisio Azevedo
+Digite o ano do livro: 1890
 Digite a quantidade total de exemplares: 5
 Livro cadastrado com sucesso!
 ```
@@ -107,8 +107,8 @@ Livro encontrado!
            Informacoes do Livro
 --------------------------------------------------
 Codigo: 101
-Titulo: o cORTIÇO
-Autor: Aluísio Azevedo
+Titulo: O Cortico
+Autor: Aluisio Azevedo
 Ano: 1890
 Total: 5 exemplar(es)
 Disponivel: 5 exemplar(es)
@@ -144,7 +144,7 @@ Usuario inserido na fila de reservas!
 ===== HISTORICO DE EMPRESTIMOS =====
 Usuario: Bonfim
 Codigo do livro: 101
-Titulo do livro: Estrutura de Dados
+Titulo do livro: O Cortico
 ------------------------------------
 ```
 
@@ -168,9 +168,9 @@ Livro com codigo 101 removido com sucesso!
 
 ```text
 Escolha uma opcao (apenas numeros): 13
-Digite o titulo ou autor (ou parte deles) para busca: Weiss
-Resultados da busca por 'Weiss':
-Codigo: 101 | Titulo: Estrutura de Dados | Autor: Mark Allen Weiss | Ano: 2018 | Total: 5 | Disponivel: 5
+Digite o titulo ou autor (ou parte deles) para busca: Aluisio
+Resultados da busca por 'Aluisio':
+Codigo: 101 | Titulo: O Cortico | Autor: Aluisio Azevedo | Ano: 1890 | Total: 5 | Disponivel: 5
 ```
 
 ## Funcionalidades Implementadas
